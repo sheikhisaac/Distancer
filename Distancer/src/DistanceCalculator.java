@@ -1,0 +1,25 @@
+//Isaac Sheikh 06.06.2017
+class DistanceCalculator
+{
+    public static void main (String[] args) throws java.lang.Exception
+    {
+        System.out.println(distance(32.9697, -96.80322, 29.46786, -98.53506) + " Miles\n");
+    }
+
+    //uses the latitudes and longitudes of point A/B to determine the distance in miles from point A to point B
+    private static double distance(double lat1, double lon1, double lat2, double lon2) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+
+        return (dist);
+    }
+
+    //Converts from degrees to radians
+    private static double deg2rad(double deg) {return (deg * Math.PI / 180.0);}
+
+    //Converts from radians to degrees
+    private static double rad2deg(double rad) {return (rad * 180 / Math.PI);}
+}
